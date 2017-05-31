@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-for</h1>
+	<hr>
+	<div id="app">
+		<ul>
+			<!--index可以随意定义别名-->
+			<li v-for="(bbb,index) in devst">
+				{{ index }} {{ bbb.name }} -{{ bbb.age }}
+			</li>
+			<br>
+			<li v-for="aaaa in devstudent">
+				{{aaaa}}
+			</li>
+		</ul>
+	</div>
+	<script>
+		var aaaa=new Vue({
+			el:'#app',
+			data:{
+				student:[5,98,56,57,58,59,61,62],
+				st:[
+					{name:'wos',age:'35'},
+					{name:'li',age:'27'},
+					{name:'wang',age:'34'},
+					{name:'zhang',age:'19'},
+					{name:'tian',age:'29'},
+					{name:'sun',age:'18'}
+				]
+			},
+			//计算，发生在用户看到界面之前。
+			computed:{
+				//重排序
+				devstudent:function(){
+					//return this.student.sort(sortNumber);
+					return this.student.reverse();
+				},
+				devst:function(){
+					return sortByKey(this.st,'age');
+				}
+			}
+		})
+
+		function sortNumber(a,b){return a-b}
+		function sortByKey(array,key){
+			return array.sort(function(a,b){
+				var x=a[key];y=b[key];
+				return ((x<y)?-1:((x>y)?1:0));
+			});
+		}
+	</script>
+</body>
+</html>

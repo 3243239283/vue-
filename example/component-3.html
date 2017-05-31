@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>component-3父子组件 祖>父>子</h1>
+	<hr>
+	<div id="app">
+		<world v-bind:here="message"></world>
+	</div>
+
+	<script>
+		city={
+			template:'<div>this is city</div>'
+		}
+		worldworld={
+			template:'<div>my here is<city></city></div>',
+			components:{
+				"city":city
+			}
+		}
+
+		//只允许父组件向子组件传值，单项数据流。
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				message:'USA!'
+			},
+			components:{
+				"world":worldworld
+			}
+		})
+	</script>
+</body>
+</html>

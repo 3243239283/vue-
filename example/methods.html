@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>methods</h1>
+	<hr>
+	<div id="app">
+		{{ a }}
+		<p>
+			<button @click="jia">+</button>
+			<button @click="jian">-</button>
+		</p>
+		<p>
+			<button @click="a++">+</button>
+			<button @click="a--">-</button>
+		</p>
+		<p><button @click="jia(2,$event)">+</button></p>
+		<p><button @click="a=0">归零</button></p>
+
+		<p>
+			<button onclick="jiajia()">调用原生事件</button>
+			<btn @click.native='jia'></btn>
+		</p>
+		<button onclick="vm.jia()">外部访问构造器里的事件</button>
+	</div>
+	<script>
+		//原生事件
+		function jiajia(){
+			vm.a++
+		}
+
+		var btn={
+			template:'<button>外部组件</button>'
+		}
+
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				a:1
+			},
+			methods:{
+				jia:function(num,event){
+					this.a ++
+				},
+				jian:function(){
+					this.a --
+				}
+			},
+			components:{
+				//引进外部组件
+				"btn":btn
+			}
+		})
+	</script>
+</body>
+</html>

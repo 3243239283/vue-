@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>Vue.extend</h1>
+	<hr>
+	<div id="header"></div>
+	<div id="footer"></div>
+	<script>
+		var header_aaaa=Vue.extend({
+			template:'<p>{{message}}</p>',
+			data:function(){
+				return{
+					message:'this is header!'
+				}
+			}
+		})
+		var footer_aaaa=Vue.extend({
+			template:'<p>{{message}}</p>',
+			data:function(){
+				return{
+					message:'this is fotter!'
+				}
+			}
+		})
+
+		//挂载
+		new header_aaaa().$mount('#header');
+		new footer_aaaa().$mount('#footer');
+
+	</script>
+</body>
+</html>

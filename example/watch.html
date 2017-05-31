@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>watch 事件监控</h1>
+	<hr>
+	<div id="app">
+		<p>苹果 {{ price }}元/个</p>
+		<p>购买数量：{{ amount }}</p>
+		<p>总价：{{ gross }}</p>
+		<p>
+			<button @click="jian">-</button>
+			<button @click="jia">+</button>
+		</p>
+	</div>
+	<script>
+		var vm=new Vue({
+			el:'#app',
+			data:{
+				price:5,
+				amount:0
+			},
+			methods:{
+				jia:function(){
+					this.amount++
+				},
+				jian:function(){
+					this.amount--
+				}
+			},
+			computed:{
+				gross:function(){
+					return '¥'+this.price*this.amount
+				}
+			},
+			watch:{
+				amount:function(newVal,oldVal){
+					if(newVal<0){
+						this.amount=0
+					}
+				}
+			}
+		})
+
+		//外部监听
+		/*vm.$watch('n',function(newVal,oldVal){
+			if(newVal<1){
+				vm.n=1
+			}
+		},{deel:true,immediate:true})*/
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>Template</h1>
+	<hr>
+	<div id="app">
+		{{message}}
+	</div>
+	
+	<!-- 第一种模板定义方式 -->
+	<template id="demo2">
+		<h1 style="color:red">template标签模板</h1>
+	</template>
+	<!-- 第二种模板定义方式 -->
+	<script type="x-template" id="demo3">
+		<h1 style="color:red">script标签模板</h1>
+	</script>
+
+	<script>
+		var aaaa=new Vue({ 
+			el:'#app',
+			data:{
+				message:'hello Vue!'
+			},
+			/*template:'#demo3'*/
+			/*第三种模板定义方式*/
+			template:`<h1 style="color:red">标签模板</h1>`
+		})
+	</script>
+</body>
+</html>

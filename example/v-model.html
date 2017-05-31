@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-model</h1>
+	<hr>
+	<div id="app">
+		<p>原始文本：{{ message }}</p>
+		<h3>文本框</h3>
+		<p>v-model:<input type="text" v-model="message"></p>
+		<!--修饰符：lazy(懒加载，一般用于搜索框)-->
+		<p>v-model.lazy:<input type="text" v-model.lazy="message"></p>
+		<!--修饰符：number(转换格式，一般用于搜索框)-->
+		<p>v-model.number:<input type="text" v-model.number="message"></p>
+		<!--修饰符：trim(去掉空格，一般用于搜索框)-->
+		<p>v-model.trim:<input type="text" v-model.trim="message"></p>
+		<hr>
+
+		<h3>文本区域</h3>
+		<textarea cols="30" rows="10">{{ message }}</textarea>
+		<textarea cols="30" rows="10" v-model="message"></textarea>
+		<hr>
+
+		<h3>单选按钮</h3>
+		<p>
+			<input type="checkbox" id="asdf" v-model="xz">
+			<label for="asdf">{{xz}}</label>
+		</p>
+		<hr>
+
+		<h3>多个单选框绑定一个数组</h3>
+		<p>
+			<input type="checkbox" id="Jack" value="Jack" v-model="xzArray">
+			<label for="asdf">Jack</label>
+			<br>
+			<input type="checkbox" id="John" value="John" v-model="xzArray">
+			<label for="asdf">John</label>
+			<br>
+			<input type="checkbox" id="Mike" value="Mike" v-model="xzArray">
+			<label for="asdf">Mike</label>
+			<p>{{xzArray}}</p>
+		</p>
+		<hr>
+
+		<h3>单选按钮</h3>
+		<input type="radio" id="one" value="true" v-model="danxuan">
+		<label for="one">true</label>
+		<input type="radio" id="two" value="false" v-model="danxuan">
+		<label for="two">false</label>
+		<hr>
+
+		<h3>选择列表select</h3>
+		<p>
+			<select v-model="selecttxt">
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<p>{{ selecttxt }}</p>
+			<select v-model="rerge" multiple>
+				<option>A</option>
+				<option>B</option>
+				<option>C</option>
+			</select>
+			<p>{{ rerge }}</p>
+		</p>
+	</div>
+	<script>
+		var aaaa=new Vue({
+			el:'#app',
+			data:{
+				message:'hello Vue!',
+				xz:true,
+				xzArray:[],
+				danxuan:'',
+				selecttxt:'',
+				rerge:[]
+			}
+		})
+	</script>
+</body>
+</html>

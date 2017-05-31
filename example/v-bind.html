@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-bind</h1>
+	<hr>
+	<div id="app">
+		<!-- 用动态的形式绑定标签属性 @绑定事件、:绑定属性-->
+		<img v-bind:src="imgSrc" :width="width" />
+		<hr>
+		<div :class="className">1、绑定class</div>
+		<div :class="{classA:colorOr}">2、绑定class</div>
+		<div :class="{classA,classB}">3、绑定class中使用数组</div>
+		<div :class="[colorOr?classA:classB]">4、绑定class中使用三元表达式</div>
+		<div :class="[{classA:classOr},classB]">5、绑定class中使用判断组合</div>
+		<hr>
+		<!-- :style的key必须是css里的样式，value必须是data里的数据 -->
+		<div :style="{color:red,fontSize:font}">6、style绑定</div>
+		<div :style="fontArray">7、style绑定json语句</div>
+	</div>
+	<style type="text/css">
+		.classA{color: red;}
+		.classB{font-size: 200%;}
+	</style>
+	<script>
+		var aaaa=new Vue({
+			el:'#app',
+			data:{
+				imgSrc:'https://cn.vuejs.org/images/logo.png',
+				width:'50',
+				className:'classA',
+				colorOr:false,
+				classA:'classA',
+				classB:'classB',
+				red:'red',
+				font:'30px',
+				fontArray:{
+					color:'green',
+					fontSize:'30px'
+				}
+			}
+		})
+	</script>
+</body>
+</html>

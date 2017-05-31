@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="../assets/js/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="../assets/css/index.css">
+</head>
+<body>
+	<h1>v-if v-else v-show</h1>
+	<p>v-if 判断是否加载; v-show:调整css display</p>
+	<hr>
+	<div id="app">
+		<div v-if="ok">李大仁</div>
+		<div v-else>孙大圣</div>
+
+		<div v-show="ok2">李大仁2</div>
+	</div>
+	<script>
+		var aaaa=new Vue({
+			el:'#app',
+			data:{
+				ok:false,
+				ok2:true
+			}
+		})
+	</script>
+</body>
+</html>
