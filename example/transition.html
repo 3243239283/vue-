@@ -9,32 +9,25 @@
 <body>
 	<h1>transition动画</h1>
 	<hr>
-	<div id="app">
+	<div id="demo">
+		<button v-on:click="show = !show">Toggle</button>
 		<transition name="fade">
-			<p v-if="show">{{ message }}</p>
+			<p v-if="show">hello</p>
 		</transition>
-		<button @click="hidden">hidden</button>
 	</div>
 	<style type="text/css">
 		.fade-enter-active, .fade-leave-active {
-		  transition: opacity .5s
+		  transition: opacity 1s
 		}
 		.fade-enter, .fade-leave-active {
-		  opacity: 0
+		  opacity: 0;
 		}
 	</style>
 	<script>
 		var vm=new Vue({
-			el:'#app',
+			el:'#demo',
 			data:{
-				message:'hello vue!',
 				show:true
-			},
-			methods:{
-				hidden:function(){
-					this.show=false
-					this.a++
-				}
 			}
 		})
 	</script>
